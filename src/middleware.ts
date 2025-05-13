@@ -13,6 +13,7 @@ export default async function middleware(req: NextRequest) {
 
     // 3. Decrypt the session from the cookie
     const cookieStore = await cookies();
+    console.log("[middleware] my cookie store is", cookieStore);
     const cookie = cookieStore.get("session")?.value;
     console.log("[middleware] my cookie is", cookie);
     const session = await decrypt(cookie);
